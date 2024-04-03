@@ -20,15 +20,7 @@ class RemoteConfigService {
 
   Future<void> loadConfigs() async {
     try {
-      await _remoteConfig.setDefaults({
-        "appstore_link": "https://towng0.web.app/",
-        "commision": "25",
-        "google_map_api_key": "AIzaSyCVTz-9EeYE2TCEsBqSZ-rri-S0MVeixxE",
-        "playstore_link": "https://towng0.web.app/",
-        "stripe_commision": 25,
-        "stripe_secret_key":
-            "sk_test_51K7HboCq0PKaakbnsU3clR7YnUep86YKpxsKiSIaISWjkjmM8K0Pz57OvPQ0stD31e297ysc84LTaVPm2kSwaMs700eM515STH",
-      });
+      await _remoteConfig.setDefaults({});
       await _remoteConfig.fetchAndActivate();
 
       stripeSecretKey =
