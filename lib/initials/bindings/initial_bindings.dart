@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/utils/servcies/env_service.dart';
 import 'package:movieapp/utils/servcies/firebase_remote_config_service.dart';
@@ -10,8 +11,9 @@ class InitialBindings {
     // init firebase
     await Firebase.initializeApp();
 
-    // enable crashlytics
+    // enable and set crashlytics crashlytics
     await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
 
     // Env Service
     Get.lazyPut<EnvService>(() => EnvService());
