@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:movieapp/initials/bindings/initial_bindings.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   await InitialBindings().initInitials();
   runApp(const MyApp());
 }

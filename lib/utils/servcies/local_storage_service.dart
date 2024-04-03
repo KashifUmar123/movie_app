@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 
 class StorageService {
@@ -5,13 +6,17 @@ class StorageService {
   late GetStorage storage;
 
   Future<void> loadData() async {
-    await GetStorage.init();
-    storage = GetStorage();
-    _loadVariables();
+    try {
+      await GetStorage.init();
+      storage = GetStorage();
+      _loadVariables();
+    } catch (e) {
+      debugPrint("Failed to load Shared Prefernces: Error => $e");
+    }
   }
 
   _loadVariables() {
-    isLoggedIn = storage.read(StorageConstants.isLoggedIn) ?? false;
+    // laod variables when needed
   }
 
   Future<void> write<T>({required String key, required T data}) async {
@@ -19,6 +24,4 @@ class StorageService {
   }
 }
 
-class StorageConstants {
-  static const String isLoggedIn = "isLoggedIn";
-}
+class StorageConstants {}

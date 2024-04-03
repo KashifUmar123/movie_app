@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
 class AppRoutes {
-  static List<GetPage> pages = [
-    // list your pages here
-  ];
+  static List<GetPage> pages = [];
 
   static GetPage getPage({
     required String name,
