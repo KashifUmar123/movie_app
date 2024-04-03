@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class EnvService {
-  String googleMapApiKey = "";
-  String stripeConnectSecretKey = "";
+  String token = "";
+
   Future<void> loadEnv({String filename = ".env"}) async {
     try {
       await dotenv.load(fileName: filename);
@@ -14,13 +14,10 @@ class EnvService {
   }
 
   _populateVariables() {
-    googleMapApiKey = dotenv.env[EnvConstants.googleMapApiKey] ?? "";
-    stripeConnectSecretKey =
-        dotenv.env[EnvConstants.stripeConnectSecretKey] ?? "";
+    token = dotenv.env[_EnvConstants.token] ?? "";
   }
 }
 
-class EnvConstants {
-  static const String googleMapApiKey = "GOOGLE_MAP_API_KEY";
-  static const String stripeConnectSecretKey = "STRIPE_CONNECT_SECRET_KEY";
+class _EnvConstants {
+  static const String token = "TOKEN";
 }

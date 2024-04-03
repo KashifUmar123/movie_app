@@ -12,28 +12,15 @@ class RemoteConfigService {
   static final FirebaseRemoteConfig _remoteConfig =
       FirebaseRemoteConfig.instance;
 
-  late String stripeSecretKey;
-  late String googleMapApiKeyAndroid;
-  late String playstoreLink;
-  late String appstoreLink;
-  late num stripeCommision;
+  late String token;
 
   Future<void> loadConfigs() async {
     try {
-      await _remoteConfig.setDefaults({});
+      await _remoteConfig.setDefaults({
+        _ConfigServiceConstants.token: _envService.token,
+      });
       await _remoteConfig.fetchAndActivate();
-
-      stripeSecretKey =
-          _remoteConfig.getString(_ConfigServiceConstants.stripeSecretKey);
-      googleMapApiKeyAndroid = _remoteConfig
-          .getString(_ConfigServiceConstants.googleMapApiKeyAndroid);
-      playstoreLink =
-          _remoteConfig.getString(_ConfigServiceConstants.playstoreLink);
-      appstoreLink =
-          _remoteConfig.getString(_ConfigServiceConstants.appstoreLink);
-
-      stripeCommision =
-          _remoteConfig.getDouble(_ConfigServiceConstants.stripeCommision);
+      token = _remoteConfig.getString(_ConfigServiceConstants.token);
     } catch (e) {
       debugPrint("Failed to inti firebase config. Error => $e");
     }
@@ -41,9 +28,5 @@ class RemoteConfigService {
 }
 
 class _ConfigServiceConstants {
-  static const String stripeSecretKey = "stripe_secret_key";
-  static const String googleMapApiKeyAndroid = "google_map_api_key";
-  static const String playstoreLink = "playstore_link";
-  static const String appstoreLink = "appstore_link";
-  static const String stripeCommision = "stripe_commision";
+  static const String token = "token";
 }
