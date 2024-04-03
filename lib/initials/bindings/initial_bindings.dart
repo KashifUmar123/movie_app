@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/utils/servcies/env_service.dart';
 import 'package:movieapp/utils/servcies/firebase_remote_config_service.dart';
@@ -8,6 +9,10 @@ class InitialBindings {
   Future<void> initInitials() async {
     // init firebase
     await Firebase.initializeApp();
+
+    // enable crashlytics
+    await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+
     // Env Service
     Get.lazyPut<EnvService>(() => EnvService());
     await Get.find<EnvService>().loadEnv();

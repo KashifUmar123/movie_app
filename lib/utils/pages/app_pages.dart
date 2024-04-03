@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:movieapp/features/splash/splash_screen.dart';
+import 'package:movieapp/utils/pages/route_names.dart';
 
 class AppRoutes {
-  static List<GetPage> pages = [];
+  static List<GetPage> pages = [
+    GetPage(
+      name: Routes.splash,
+      page: () => const SplashScreen(),
+    ),
+  ];
 
   static GetPage getPage({
     required String name,
