@@ -50,9 +50,7 @@ class InitialBindings {
 
     Get.find<Dio>().interceptors.addAll(
       [
-        AuthInterceptor(
-          Get.find<RemoteConfigService>().token,
-        ),
+        AuthInterceptor(Get.find<RemoteConfigService>()),
         CustomDioInterceptor(),
       ],
     );
@@ -62,10 +60,5 @@ class InitialBindings {
 
     // put iNavigator
     Get.lazyPut<INavigator>(() => INavigator());
-
-    // analytics
-    // crashlytics
-    // environment vars
-    // shared Prefrences
   }
 }

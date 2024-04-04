@@ -12,15 +12,19 @@ class RemoteConfigService {
   static final FirebaseRemoteConfig _remoteConfig =
       FirebaseRemoteConfig.instance;
 
-  late String token;
+  String get token => _remoteConfig.getString(_ConfigServiceConstants.token);
+  String get apiKey => _remoteConfig.getString(_ConfigServiceConstants.apiKey);
 
   Future<void> loadConfigs() async {
     try {
+      await _remoteConfig.setConfigSettings(RemoteConfigSettings(
+        fetchTimeout: const Duration(seconds: 10),
+        minimumFetchInterval: const Duration(seconds: 0),
+      ));
       await _remoteConfig.setDefaults({
         _ConfigServiceConstants.token: _envService.token,
       });
       await _remoteConfig.fetchAndActivate();
-      token = _remoteConfig.getString(_ConfigServiceConstants.token);
     } catch (e) {
       debugPrint("Failed to inti firebase config. Error => $e");
     }
@@ -29,4 +33,5 @@ class RemoteConfigService {
 
 class _ConfigServiceConstants {
   static const String token = "token";
+  static const String apiKey = "api_key";
 }

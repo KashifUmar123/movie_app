@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:movieapp/network/exceptions/netwrok_exceptions.dart';
 
 class CustomDioInterceptor extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
+    log("Dio error $err");
     Failure networkException;
     switch (err.type) {
       case DioExceptionType.connectionTimeout:

@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -18,6 +19,7 @@ class DioWrapper {
     } on SocketException catch (_) {
       throw NoInternetConnection("No Internet Connection");
     } catch (e) {
+      log("Error: $e");
       throw SomethingWentWrong("Something wen't wrong");
     }
   }
@@ -29,8 +31,8 @@ class DioWrapper {
     Map<String, dynamic>? headers,
   }) async {
     try {
-      _resolveAPIMetadata(headers: headers, queryParameters: queryParameters);
-      return await _dio.post(api, data: data);
+      // _resolveAPIMetadata(headers: headers, queryParameters: queryParameters);
+      return await _dio.post(api, data: data, queryParameters: {});
     } on SocketException catch (_) {
       throw NoInternetConnection("No Internet Connection");
     } catch (e) {
@@ -49,5 +51,6 @@ class DioWrapper {
     if (headers != null) {
       _dio.options.headers.addAll(headers);
     }
+    log("Headers: ${_dio.options.headers}");
   }
 }

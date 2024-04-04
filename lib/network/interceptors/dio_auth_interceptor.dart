@@ -1,11 +1,18 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
+import 'package:movieapp/utils/servcies/firebase_remote_config_service.dart';
 
 class AuthInterceptor extends Interceptor {
-  final String token;
-  AuthInterceptor(this.token);
+  final RemoteConfigService configService;
+  AuthInterceptor(this.configService);
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    options.headers["Authorization"] = token;
+    log("interceptor added api Key: ${configService.apiKey}");
+    // options.headers["Authorization"] = token;
+    options.queryParameters.addAll({
+      "api_key": configService.apiKey,
+    });
     super.onRequest(options, handler);
   }
 }

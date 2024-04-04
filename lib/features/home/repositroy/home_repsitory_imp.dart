@@ -1,5 +1,5 @@
-import 'dart:convert';
 import 'package:dartz/dartz.dart';
+import 'package:movieapp/features/home/data/upcoming_movies_params.dart';
 import 'package:movieapp/features/home/repositroy/home_repository.dart';
 import 'package:movieapp/models/upcoming_movies_model.dart';
 import 'package:movieapp/network/dio_wrapper.dart';
@@ -12,10 +12,12 @@ class HomeRepositoryImp implements HomeRepository {
   HomeRepositoryImp(this._dioWrapper);
 
   @override
-  Future<Either<Failure, UpcomingMovies>> getMovies() async {
+  Future<Either<Failure, UpcomingMovies>> getMovies(
+    UpcomingMoviesParams params,
+  ) async {
     final result = await _dioWrapper.onGet(api: ApiEndpoints.upcomingMovies);
     if (result.data != null) {
-      UpcomingMovies movies = UpcomingMovies.fromJson(jsonDecode(result.data));
+      UpcomingMovies movies = UpcomingMovies.fromJson(result.data);
       return Right(movies);
     }
 

@@ -33,7 +33,8 @@ class CustomScaffold extends StatelessWidget {
       ),
       child: Scaffold(
         drawer: drawer,
-        body: SizedBox(
+        body: Container(
+          padding: padding,
           child: child,
         ),
         bottomNavigationBar: navigationBar,
