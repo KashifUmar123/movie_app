@@ -4,7 +4,7 @@ import 'package:movieapp/network/exceptions/netwrok_exceptions.dart';
 class CustomDioInterceptor extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
-    NetworkException networkException;
+    Failure networkException;
     switch (err.type) {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:
@@ -20,8 +20,8 @@ class CustomDioInterceptor extends Interceptor {
             networkException = ResourceNotFound('Resource not found');
             break;
           default:
-            networkException = NetworkException(
-                'Unknown server error: ${err.response?.statusCode}');
+            networkException =
+                Failure('Unknown server error: ${err.response?.statusCode}');
             break;
         }
         break;

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:movieapp/common_widgets/custom_scaffold.dart';
+import 'package:movieapp/features/splash/splash_controller.dart';
 import 'package:movieapp/utils/constants/app_colors.dart';
 import 'package:movieapp/utils/extensions/num_extension.dart';
 import 'package:movieapp/utils/extensions/styles_extension.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends GetView<SplashController> {
   const SplashScreen({super.key});
 
   @override
@@ -22,7 +24,7 @@ class SplashScreen extends StatelessWidget {
           ),
           20.heightSpace,
           const CircularProgressIndicator(
-            color: whiteColor,
+            color: blackColor,
           ),
         ],
       ),

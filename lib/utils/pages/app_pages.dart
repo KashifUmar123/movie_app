@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:movieapp/features/home/home_bindings.dart';
+import 'package:movieapp/features/home/home_screen.dart';
+import 'package:movieapp/features/splash/splash_bindings.dart';
 import 'package:movieapp/features/splash/splash_screen.dart';
 import 'package:movieapp/utils/pages/route_names.dart';
 
@@ -9,6 +12,12 @@ class AppRoutes {
     GetPage(
       name: Routes.splash,
       page: () => const SplashScreen(),
+      binding: SplashBindins(),
+    ),
+    GetPage(
+      name: Routes.home,
+      page: () => const HomeScreen(),
+      binding: HomeBindings(),
     ),
   ];
 

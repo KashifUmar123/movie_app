@@ -3,8 +3,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movieapp/network/dio_wrapper.dart';
 import 'package:movieapp/network/interceptors/dio_auth_interceptor.dart';
 import 'package:movieapp/network/interceptors/dio_error_interceptor.dart';
+import 'package:movieapp/utils/pages/navigator.dart';
 import 'package:movieapp/utils/servcies/env_service.dart';
 import 'package:movieapp/utils/servcies/firebase_remote_config_service.dart';
 import 'package:movieapp/utils/servcies/local_storage_service.dart';
@@ -54,6 +56,12 @@ class InitialBindings {
         CustomDioInterceptor(),
       ],
     );
+
+    // put diowrapper
+    Get.lazyPut(() => DioWrapper(dio: Get.find<Dio>()));
+
+    // put iNavigator
+    Get.lazyPut<INavigator>(() => INavigator());
 
     // analytics
     // crashlytics

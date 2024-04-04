@@ -1,7 +1,7 @@
-class NetworkException implements Exception {
+class Failure implements Exception {
   final String message;
 
-  NetworkException(this.message);
+  Failure(this.message);
 
   @override
   String toString() {
@@ -9,22 +9,22 @@ class NetworkException implements Exception {
   }
 }
 
-class NoInternetConnection extends NetworkException {
+class NoInternetConnection extends Failure {
   NoInternetConnection(super.message);
 }
 
-class ResourceNotFound extends NetworkException {
+class ResourceNotFound extends Failure {
   ResourceNotFound(super.message);
 }
 
-class AuthError extends NetworkException {
+class AuthError extends Failure {
   AuthError(super.message);
 }
 
-class DioTimeoutError extends NetworkException {
+class DioTimeoutError extends Failure {
   DioTimeoutError(super.message);
 }
 
-class SomethingWentWrong extends NetworkException {
+class SomethingWentWrong extends Failure {
   SomethingWentWrong(super.message);
 }

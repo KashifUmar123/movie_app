@@ -7,7 +7,7 @@ class AppTheme {
 
   static ThemeData themeData = ThemeData(
       primaryColor: whiteColor,
-      brightness: Brightness.dark,
+      brightness: Brightness.light,
       textTheme: TextTheme(
         titleLarge: GoogleFonts.poppins(
           fontSize: 26.0,
@@ -19,6 +19,6 @@ class AppTheme {
         ),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: navbarColor,
+        backgroundColor: whiteColor,
       ));
 }
