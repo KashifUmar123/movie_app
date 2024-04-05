@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/network/dio_wrapper.dart';
 import 'package:movieapp/network/interceptors/dio_auth_interceptor.dart';
-import 'package:movieapp/network/interceptors/dio_error_interceptor.dart';
 import 'package:movieapp/utils/pages/navigator.dart';
 import 'package:movieapp/utils/servcies/env_service.dart';
 import 'package:movieapp/utils/servcies/firebase_remote_config_service.dart';
