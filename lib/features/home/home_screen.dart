@@ -25,6 +25,7 @@ class HomeScreen extends GetView<HomeController> {
               style: context.label18400,
             ),
           ),
+          14.heightSpace,
           Obx(
             () => Expanded(
               child: AnimatedSwitcher(

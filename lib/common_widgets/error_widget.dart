@@ -15,36 +15,38 @@ class CustomErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: topPadding ?? context.height * .25),
-      child: Container(
-        width: context.width * .6,
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          children: [
-            Container(
-              height: 70,
-              width: 70,
-              decoration: BoxDecoration(
-                color: greyColor,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: const Center(
-                child: Icon(
-                  Icons.hourglass_empty,
-                  color: whiteColor,
-                  size: 30,
-                ),
+    return Container(
+      width: context.width * .6,
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: greyColor,
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            height: 70,
+            width: 70,
+            decoration: BoxDecoration(
+              color: blackColor,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: const Center(
+              child: Icon(
+                Icons.hourglass_empty,
+                color: whiteColor,
+                size: 30,
               ),
             ),
-            30.heightSpace,
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: context.label18400.copyWith(fontSize: 20),
-            ),
-          ],
-        ),
+          ),
+          30.heightSpace,
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: context.label18400.copyWith(fontSize: 20, color: whiteColor),
+          ),
+        ],
       ),
     );
   }
