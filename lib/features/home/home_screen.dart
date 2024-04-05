@@ -39,7 +39,7 @@ class HomeScreen extends GetView<HomeController> {
     );
   }
 
-  _buildView(BuildContext context) {
+  Widget _buildView(BuildContext context) {
     if (controller.hasError.value) {
       return CustomErrorWidget(
         title: controller.error.value,

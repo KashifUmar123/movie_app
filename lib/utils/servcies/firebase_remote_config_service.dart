@@ -12,7 +12,7 @@ class RemoteConfigService {
   static final FirebaseRemoteConfig _remoteConfig =
       FirebaseRemoteConfig.instance;
 
-  String get token => _remoteConfig.getString(_ConfigServiceConstants.token);
+  // String get token => _remoteConfig.getString(_ConfigServiceConstants.token);
   String get apiKey => _remoteConfig.getString(_ConfigServiceConstants.apiKey);
 
   Future<void> loadConfigs() async {

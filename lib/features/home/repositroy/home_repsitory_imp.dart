@@ -15,15 +15,22 @@ class HomeRepositoryImp implements HomeRepository {
   Future<Either<Failure, UpcomingMovies>> getMovies(
     UpcomingMoviesParams params,
   ) async {
-    final result = await _dioWrapper.onGet(
-        api: "${ApiEndpoints.upcomingMovies}&page=${params.page}");
+    try {
+      final result = await _dioWrapper.onGet(
+          api: "${ApiEndpoints.upcomingMovies}&page=${params.page}");
 
-    if (result.data != null) {
-      UpcomingMovies movies = UpcomingMovies.fromJson(result.data);
-      return Right(movies);
+      if (result.data != null) {
+        UpcomingMovies movies = UpcomingMovies.fromJson(result.data);
+        return Right(movies);
+      }
+
+      return Left(SomethingWentWrong("Something wen't wrong"));
+    } catch (e) {
+      if (e is Failure) {
+        return Left(e);
+      }
+      return Left(SomethingWentWrong("Something wen't wrong"));
     }
-
-    return Left(SomethingWentWrong("Something wen't wrong"));
   }
 
   @override

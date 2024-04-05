@@ -1,37 +1,27 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:movieapp/network/exceptions/netwrok_exceptions.dart';
 
-class CustomDioInterceptor extends Interceptor {
-  @override
-  void onError(DioException err, ErrorInterceptorHandler handler) {
-    log("Dio error $err");
-    Failure networkException;
-    switch (err.type) {
-      case DioExceptionType.connectionTimeout:
-      case DioExceptionType.sendTimeout:
-      case DioExceptionType.receiveTimeout:
-        networkException = DioTimeoutError('Request timed out');
+Failure dioErrorWrapper(DioException err) {
+  Failure networkException;
+  if (err.type == DioExceptionType.connectionTimeout ||
+      err.type == DioExceptionType.sendTimeout ||
+      err.type == DioExceptionType.receiveTimeout) {
+    networkException = DioTimeoutError('Request timed out');
+  } else if (err.type == DioExceptionType.badResponse) {
+    switch (err.response?.statusCode) {
+      case 401:
+        networkException = AuthError('Unauthorized');
         break;
-      case DioExceptionType.badResponse:
-        switch (err.response?.statusCode) {
-          case 401:
-            networkException = AuthError('Unauthorized');
-            break;
-          case 404:
-            networkException = ResourceNotFound('Resource not found');
-            break;
-          default:
-            networkException =
-                Failure('Unknown server error: ${err.response?.statusCode}');
-            break;
-        }
+      case 404:
+        networkException = ResourceNotFound('Resource not found');
         break;
       default:
-        networkException = SomethingWentWrong('Unknown Dio error: ${err.type}');
+        networkException =
+            Failure('Unknown server error: ${err.response?.statusCode}');
         break;
     }
-    return handler.next(err.copyWith(error: networkException));
+  } else {
+    networkException = SomethingWentWrong('Unknown Dio error: ${err.type}');
   }
+  return networkException;
 }

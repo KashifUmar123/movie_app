@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:movieapp/network/exceptions/netwrok_exceptions.dart';
+import 'package:movieapp/network/interceptors/dio_error_interceptor.dart';
 
 class DioWrapper {
   final Dio _dio;
@@ -14,11 +14,13 @@ class DioWrapper {
   }) async {
     try {
       _resolveAPIMetadata(headers: headers, queryParameters: queryParameters);
+
       return await _dio.get(api);
     } on SocketException catch (_) {
       throw NoInternetConnection("No Internet Connection");
+    } on DioException catch (err) {
+      throw dioErrorWrapper(err);
     } catch (e) {
-      debugPrint("Error => $e");
       throw SomethingWentWrong("Something wen't wrong");
     }
   }
@@ -34,8 +36,9 @@ class DioWrapper {
       return await _dio.post(api, data: data, queryParameters: {});
     } on SocketException catch (_) {
       throw NoInternetConnection("No Internet Connection");
+    } on DioException catch (err) {
+      throw dioErrorWrapper(err);
     } catch (e) {
-      debugPrint("Error => $e");
       throw SomethingWentWrong("Something wen't wrong");
     }
   }

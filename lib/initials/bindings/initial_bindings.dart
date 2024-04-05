@@ -49,10 +49,7 @@ class InitialBindings {
     );
 
     Get.find<Dio>().interceptors.addAll(
-      [
-        AuthInterceptor(Get.find<RemoteConfigService>()),
-        CustomDioInterceptor(),
-      ],
+      [AuthInterceptor(Get.find<RemoteConfigService>())],
     );
 
     // put diowrapper
