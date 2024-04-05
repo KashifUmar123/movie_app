@@ -3,28 +3,17 @@ import 'package:movieapp/common_widgets/custom_image.dart';
 import 'package:movieapp/models/upcoming_movies_model.dart';
 import 'package:movieapp/utils/constants/app_colors.dart';
 import 'package:movieapp/utils/extensions/size_extension.dart';
+import 'package:movieapp/utils/utils.dart';
 
-class MovieTileWidget extends StatefulWidget {
+class MovieTileWidget extends StatelessWidget {
   const MovieTileWidget({
     super.key,
     required this.movie,
+    required this.onMovieTap,
   });
 
   final Movie movie;
-
-  @override
-  State<MovieTileWidget> createState() => _MovieTileWidgetState();
-}
-
-class _MovieTileWidgetState extends State<MovieTileWidget> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  String _getImageUrl(String imagePath) {
-    return "https://image.tmdb.org/t/p/w500$imagePath";
-  }
+  final VoidCallback onMovieTap;
 
   @override
   Widget build(BuildContext context) {
@@ -36,17 +25,14 @@ class _MovieTileWidgetState extends State<MovieTileWidget> {
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: CustomImage(
-              path: _getImageUrl(widget.movie.backdropPath),
+              path: Utils.getPosterPath(movie.backdropPath),
               fit: BoxFit.cover,
               height: 180,
               width: context.width,
             ),
           ),
           InkWell(
-            onTap: () async {
-              // upcomingMoviesViewModel.setSelectedResults(widget.results);
-              // navService.nav.pushNamed(Routes.movieDetails);
-            },
+            onTap: onMovieTap,
             child: Container(
               height: 180,
               width: context.width,
@@ -68,7 +54,7 @@ class _MovieTileWidgetState extends State<MovieTileWidget> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      widget.movie.title,
+                      movie.title,
                       style: const TextStyle(
                         color: whiteColor,
                       ),

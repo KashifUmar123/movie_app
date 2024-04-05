@@ -51,6 +51,7 @@ class HomeScreen extends GetView<HomeController> {
       movies: controller.movies,
       isLoadingMore: controller.moviesLoading.value,
       scrollController: controller.scrollController,
+      onMovieTap: controller.onMovieTap,
     );
   }
 }

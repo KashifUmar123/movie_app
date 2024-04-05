@@ -9,11 +9,13 @@ class MoviesListWidget extends StatelessWidget {
     required this.movies,
     this.isLoadingMore = false,
     required this.scrollController,
+    required this.onMovieTap,
   });
 
   final List<Movie> movies;
   final bool isLoadingMore;
   final ScrollController scrollController;
+  final Function(Movie)? onMovieTap;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,12 @@ class MoviesListWidget extends StatelessWidget {
         ...movies.map(
           (e) => Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
-            child: MovieTileWidget(movie: e),
+            child: MovieTileWidget(
+              movie: e,
+              onMovieTap: () {
+                onMovieTap?.call(e);
+              },
+            ),
           ),
         ),
         if (isLoadingMore)

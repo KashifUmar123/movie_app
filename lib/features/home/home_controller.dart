@@ -4,6 +4,7 @@ import 'package:movieapp/features/home/data/upcoming_movies_params.dart';
 import 'package:movieapp/features/home/usecases/fetch_upcoming_movies_list.dart';
 import 'package:movieapp/initials/controllers/base_controller.dart';
 import 'package:movieapp/models/upcoming_movies_model.dart';
+import 'package:movieapp/utils/pages/route_names.dart';
 
 class HomeController extends BaseController {
   final FetchUpcomingMoviesUsecase _fetchUpcomingMoviesUsecase;
@@ -39,6 +40,10 @@ class HomeController extends BaseController {
         handlePagination();
       }
     });
+  }
+
+  void onMovieTap(Movie movie) {
+    iNavigator.pushNamed(Routes.movieDetails, arguments: movie);
   }
 
   void handlePagination() {
