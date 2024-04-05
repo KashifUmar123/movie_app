@@ -20,11 +20,13 @@ class UpcomingMovies extends Equatable {
 
   factory UpcomingMovies.fromJson(Map<String, dynamic> json) {
     return UpcomingMovies(
-      dates: DateRange.fromJson(json['dates']),
-      page: json['page'],
-      results: List<Movie>.from(json['results'].map((x) => Movie.fromJson(x))),
-      totalPages: json['total_pages'],
-      totalResults: json['total_results'],
+      dates: DateRange.fromJson(json['dates'] ?? {}),
+      page: json['page'] ?? 0,
+      results: json['results'] != null
+          ? List<Movie>.from(json['results'].map((x) => Movie.fromJson(x)))
+          : [],
+      totalPages: json['total_pages'] ?? 0,
+      totalResults: json['total_results'] ?? 0,
     );
   }
 }
@@ -43,8 +45,8 @@ class DateRange extends Equatable {
 
   factory DateRange.fromJson(Map<String, dynamic> json) {
     return DateRange(
-      maximum: json['maximum'],
-      minimum: json['minimum'],
+      maximum: json['maximum'] ?? "",
+      minimum: json['minimum'] ?? "",
     );
   }
 }
@@ -102,20 +104,25 @@ class Movie extends Equatable {
 
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
-      adult: json['adult'],
-      backdropPath: json['backdrop_path'],
-      genreIds: List<int>.from(json['genre_ids']),
-      id: json['id'],
-      originalLanguage: json['original_language'],
-      originalTitle: json['original_title'],
-      overview: json['overview'],
-      popularity: json['popularity'].toDouble(),
-      posterPath: json['poster_path'],
-      releaseDate: json['release_date'],
-      title: json['title'],
-      video: json['video'],
-      voteAverage: json['vote_average'].toDouble(),
-      voteCount: json['vote_count'],
+      adult: json['adult'] ?? false,
+      backdropPath: json['backdrop_path'] ?? "",
+      genreIds:
+          json['genre_ids'] != null ? List<int>.from(json['genre_ids']) : [],
+      id: json['id'] ?? 0,
+      originalLanguage: json['original_language'] ?? "",
+      originalTitle: json['original_title'] ?? "",
+      overview: json['overview'] ?? "",
+      popularity: (json['popularity'] != null && json['popularity'] is num)
+          ? json['popularity'].toDouble()
+          : 0,
+      posterPath: json['poster_path'] ?? "",
+      releaseDate: json['release_date'] ?? "",
+      title: json['title'] ?? "",
+      video: json['video'] ?? "",
+      voteAverage: (json['vote_average'] != null && json['vote_average'] is num)
+          ? json['vote_average'].toDouble()
+          : 0,
+      voteCount: json['vote_count'] ?? 0,
     );
   }
 }

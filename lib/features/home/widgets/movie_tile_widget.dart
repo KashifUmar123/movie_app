@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movieapp/common_widgets/custom_image.dart';
 import 'package:movieapp/models/upcoming_movies_model.dart';
 import 'package:movieapp/utils/constants/app_colors.dart';
 import 'package:movieapp/utils/extensions/size_extension.dart';
@@ -21,6 +22,10 @@ class _MovieTileWidgetState extends State<MovieTileWidget> {
     super.initState();
   }
 
+  String _getImageUrl(String imagePath) {
+    return "https://image.tmdb.org/t/p/w500$imagePath";
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -30,8 +35,8 @@ class _MovieTileWidgetState extends State<MovieTileWidget> {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: Image.network(
-              'https://image.tmdb.org/t/p/w500${widget.movie.backdropPath}',
+            child: CustomImage(
+              path: _getImageUrl(widget.movie.backdropPath),
               fit: BoxFit.cover,
               height: 180,
               width: context.width,

@@ -15,7 +15,9 @@ class HomeRepositoryImp implements HomeRepository {
   Future<Either<Failure, UpcomingMovies>> getMovies(
     UpcomingMoviesParams params,
   ) async {
-    final result = await _dioWrapper.onGet(api: ApiEndpoints.upcomingMovies);
+    final result = await _dioWrapper.onGet(
+        api: "${ApiEndpoints.upcomingMovies}&page=${params.page}");
+
     if (result.data != null) {
       UpcomingMovies movies = UpcomingMovies.fromJson(result.data);
       return Right(movies);
