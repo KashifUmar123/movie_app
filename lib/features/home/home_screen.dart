@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:alice/alice.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/common_widgets/custom_scaffold.dart';
@@ -15,6 +18,11 @@ class HomeScreen extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return CustomScaffold(
       padding: const EdgeInsets.symmetric(horizontal: 24),
+      floatingActionButton: GetBuilder(
+          init: controller,
+          builder: (_) {
+            return _showInspectorWidget(context);
+          }),
       child: Column(
         children: [
           50.heightSpace,
@@ -37,6 +45,23 @@ class HomeScreen extends GetView<HomeController> {
         ],
       ),
     );
+  }
+
+  Widget _showInspectorWidget(BuildContext context) {
+    log("_showInspectorWidget: ${controller.enableInspector}");
+    if (controller.enableInspector) {
+      return FloatingActionButton(
+        onPressed: () {
+          controller.alice.showInspector();
+        },
+        child: const Center(
+          child: Icon(
+            Icons.api,
+          ),
+        ),
+      );
+    }
+    return const SizedBox.shrink();
   }
 
   Widget _buildView(BuildContext context) {

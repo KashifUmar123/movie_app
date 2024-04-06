@@ -1,30 +1,61 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
+import 'package:movieapp/network/dio_wrapper.dart';
 
-import 'package:movieapp/main.dart';
+// create a mock dio wrapper
+class MockDioWrapper extends Mock implements DioWrapper {
+  @override
+  Future<Response> onGet(
+      {required String api,
+      Map<String, dynamic>? queryParameters,
+      Map<String, dynamic>? headers}) async {
+    return Response<dynamic>(
+      requestOptions: RequestOptions(),
+    );
+  }
+}
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MovieApp());
+  // group("Home repository", () {
+  //   test("Testing fetching movies", () async {
+  //     // init mock dio
+  //     final mockDioWrapper = MockDioWrapper();
+  //     // init repo
+  //     HomeRepository homeRepository = HomeRepositoryImp(mockDioWrapper);
+  //     // test the fectch movie
+  //     when(mockDioWrapper.onGet(api: 'api')).thenAnswer((realInvocation) {
+  //       return Future.value(Response(
+  //         requestOptions: RequestOptions(),
+  //         statusCode: 404,
+  //       ));
+  //     });
+  //     dynamic result;
+  //     try {
+  //       result = await homeRepository.getMovies(UpcomingMoviesParams(page: 1));
+  //     } catch (e) {
+  //       result = e;
+  //     }
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  //     // verify(mockDioWrapper.onGet(api: 'api')).called(1);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  //     expect(result, ResourceNotFound("Resource not found"));
+  //   });
+  // });
+  // testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  //   // Build our app and trigger a frame.
+  //   await tester.pumpWidget(const MovieApp());
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });
+  //   // Verify that our counter starts at 0.
+  //   expect(find.text('0'), findsOneWidget);
+  //   expect(find.text('1'), findsNothing);
+
+  //   // Tap the '+' icon and trigger a frame.
+  //   await tester.tap(find.byIcon(Icons.add));
+  //   await tester.pump();
+
+  //   // Verify that our counter has incremented.
+  //   expect(find.text('0'), findsNothing);
+  //   expect(find.text('1'), findsOneWidget);
+  // });
 }

@@ -1,3 +1,4 @@
+import 'package:alice/alice.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -26,6 +27,7 @@ class InitialBindings {
     // local storage service
     Get.lazyPut<StorageService>(() => StorageService());
     await Get.find<StorageService>().loadData();
+
     // Remote Config Service
     Get.lazyPut<RemoteConfigService>(
       () => RemoteConfigService(
@@ -39,16 +41,26 @@ class InitialBindings {
     Get.lazyPut(
       () => Dio(
         BaseOptions(
-          baseUrl: "https://api.themoviedb.org",
-          connectTimeout: const Duration(seconds: 4),
-          sendTimeout: const Duration(seconds: 4),
-          receiveTimeout: const Duration(seconds: 4),
+          baseUrl: Get.find<RemoteConfigService>().baseUrl,
+          connectTimeout: const Duration(seconds: 10),
+          sendTimeout: const Duration(seconds: 10),
+          receiveTimeout: const Duration(seconds: 10),
         ),
       ),
     );
 
+    // Alice inspector
+    Get.lazyPut(
+      () => Alice(
+        showNotification: true,
+      ),
+    );
+
     Get.find<Dio>().interceptors.addAll(
-      [AuthInterceptor(Get.find<RemoteConfigService>())],
+      [
+        AuthInterceptor(Get.find<RemoteConfigService>()),
+        Get.find<Alice>().getDioInterceptor(),
+      ],
     );
 
     // put diowrapper

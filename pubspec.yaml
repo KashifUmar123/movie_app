@@ -24,6 +24,8 @@ dependencies:
   dartz: ^0.10.1
   equatable: ^2.0.5
   shimmer: ^3.0.0
+  mockito: ^5.4.4
+  alice: ^0.4.1
 
 dev_dependencies:
   flutter_test:
