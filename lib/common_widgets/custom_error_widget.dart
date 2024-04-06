@@ -67,7 +67,7 @@ class CustomErrorWidget extends StatelessWidget {
         width: 243,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: skyBlueColor,
+          color: blackColor,
         ),
         child: Center(
           child: Text(
