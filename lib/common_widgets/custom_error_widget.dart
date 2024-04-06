@@ -9,14 +9,18 @@ class CustomErrorWidget extends StatelessWidget {
     super.key,
     required this.title,
     this.topPadding,
+    this.onRetry,
+    this.retryText,
   });
   final String title;
   final double? topPadding;
+  final VoidCallback? onRetry;
+  final String? retryText;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: context.width * .6,
+      width: context.width - 48,
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: greyColor,
@@ -34,7 +38,7 @@ class CustomErrorWidget extends StatelessWidget {
             ),
             child: const Center(
               child: Icon(
-                Icons.hourglass_empty,
+                Icons.error,
                 color: whiteColor,
                 size: 30,
               ),
@@ -46,7 +50,34 @@ class CustomErrorWidget extends StatelessWidget {
             textAlign: TextAlign.center,
             style: context.label18400.copyWith(fontSize: 20, color: whiteColor),
           ),
+          30.heightSpace,
+          if (onRetry != null) _buildButton(context),
         ],
+      ),
+    );
+  }
+
+  Widget _buildButton(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        onRetry?.call();
+      },
+      child: Container(
+        height: 50,
+        width: 243,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: skyBlueColor,
+        ),
+        child: Center(
+          child: Text(
+            retryText ?? "Retry",
+            style: context.label14400.copyWith(
+              color: whiteColor,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
       ),
     );
   }

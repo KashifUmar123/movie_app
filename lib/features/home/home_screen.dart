@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/common_widgets/custom_scaffold.dart';
-import 'package:movieapp/common_widgets/error_widget.dart';
+import 'package:movieapp/common_widgets/custom_error_widget.dart';
 import 'package:movieapp/features/home/home_controller.dart';
 import 'package:movieapp/features/home/widgets/home_shimmer.dart';
 import 'package:movieapp/features/home/widgets/movies_lists_widget.dart';
@@ -64,6 +64,7 @@ class HomeScreen extends GetView<HomeController> {
     if (controller.hasError.value) {
       return CustomErrorWidget(
         title: controller.error.value,
+        onRetry: controller.onRetry,
       );
     } else if (controller.isLoading.value) {
       return const HomeShimmer();
