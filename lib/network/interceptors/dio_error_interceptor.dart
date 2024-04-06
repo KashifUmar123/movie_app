@@ -20,6 +20,8 @@ Failure dioErrorWrapper(DioException err) {
             Failure('Unknown server error: ${err.response?.statusCode}');
         break;
     }
+  } else if (err.type == DioExceptionType.connectionError) {
+    return NoInternetConnection("No internet connection, Please retry");
   } else {
     networkException = SomethingWentWrong('Unknown Dio error: ${err.type}');
   }

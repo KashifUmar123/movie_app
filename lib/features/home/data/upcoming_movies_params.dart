@@ -1,10 +1,11 @@
 class UpcomingMoviesParams {
   int page;
+
   UpcomingMoviesParams({
     required this.page,
   });
-}
 
-class NoParms {
-  Map<String, dynamic> toMap() => {};
+  factory UpcomingMoviesParams.defaultParams() {
+    return UpcomingMoviesParams(page: 1);
+  }
 }

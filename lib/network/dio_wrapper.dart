@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:movieapp/network/exceptions/netwrok_exceptions.dart';
@@ -17,6 +18,7 @@ class DioWrapper {
 
       return await _dio.get(api);
     } on SocketException catch (_) {
+      log("socket connection error");
       throw NoInternetConnection("No Internet Connection");
     } on DioException catch (err) {
       throw dioErrorWrapper(err);

@@ -47,11 +47,14 @@ class HomeScreen extends GetView<HomeController> {
     } else if (controller.isLoading.value) {
       return const HomeShimmer();
     }
-    return MoviesListWidget(
-      movies: controller.movies,
-      isLoadingMore: controller.moviesLoading.value,
-      scrollController: controller.scrollController,
-      onMovieTap: controller.onMovieTap,
+    return RefreshIndicator(
+      onRefresh: controller.onRefresh,
+      child: MoviesListWidget(
+        movies: controller.movies,
+        isLoadingMore: controller.moviesLoading.value,
+        scrollController: controller.scrollController,
+        onMovieTap: controller.onMovieTap,
+      ),
     );
   }
 }

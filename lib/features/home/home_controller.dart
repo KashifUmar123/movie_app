@@ -5,6 +5,7 @@ import 'package:movieapp/features/home/usecases/fetch_upcoming_movies_list.dart'
 import 'package:movieapp/initials/controllers/base_controller.dart';
 import 'package:movieapp/models/upcoming_movies_model.dart';
 import 'package:movieapp/utils/pages/route_names.dart';
+import 'package:movieapp/utils/utils.dart';
 
 class HomeController extends BaseController {
   final FetchUpcomingMoviesUsecase _fetchUpcomingMoviesUsecase;
@@ -29,8 +30,13 @@ class HomeController extends BaseController {
     super.onInit();
     scrollController = ScrollController();
     _registerPaginationListener();
-    params = UpcomingMoviesParams(page: 1);
+    params = UpcomingMoviesParams.defaultParams();
     fetchMovies(showLoader: true);
+  }
+
+  Future<void> onRefresh() async {
+    params = UpcomingMoviesParams.defaultParams();
+    await fetchMovies();
   }
 
   _registerPaginationListener() {
@@ -66,12 +72,18 @@ class HomeController extends BaseController {
       if (showLoader) {
         hasError(true);
         error(left.message);
+      } else {
+        Utils.showSnackBar(message: left.message);
       }
     }, (right) {
       if (right.totalPages == params.page) {
         hasMore(false);
       }
-      movies.addAll(right.results);
+      if (params.page == 1) {
+        movies(right.results);
+      } else {
+        movies.addAll(right.results);
+      }
     });
     isLoading(false);
     moviesLoading(false);
