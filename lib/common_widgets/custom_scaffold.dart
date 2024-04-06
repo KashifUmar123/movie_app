@@ -12,6 +12,7 @@ class CustomScaffold extends StatelessWidget {
     this.systemNavigationBarColor,
     this.padding,
     this.floatingActionButton,
+    this.statusBarIconBrightness,
   });
   final Widget child;
   final Widget? navigationBar;
@@ -20,6 +21,7 @@ class CustomScaffold extends StatelessWidget {
   final Color? systemNavigationBarColor;
   final EdgeInsetsGeometry? padding;
   final Widget? floatingActionButton;
+  final Brightness? statusBarIconBrightness;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +30,8 @@ class CustomScaffold extends StatelessWidget {
         statusBarColor: statusBarColor ?? whiteColor,
         systemNavigationBarColor: systemNavigationBarColor ?? whiteColor,
         statusBarBrightness: Brightness.light,
-        systemStatusBarContrastEnforced: true,
-        statusBarIconBrightness: Brightness.dark,
+        systemStatusBarContrastEnforced: false,
+        statusBarIconBrightness: statusBarIconBrightness ?? Brightness.dark,
       ),
       child: Scaffold(
         drawer: drawer,

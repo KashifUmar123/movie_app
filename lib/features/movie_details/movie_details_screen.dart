@@ -13,15 +13,18 @@ class MovieDetailsScreen extends GetView<MovieDetailsController> {
   Widget build(BuildContext context) {
     return CustomScaffold(
       statusBarColor: Colors.transparent,
-      child: Column(
-        children: [
-          UpperDetailsMovieWidget(
-            movie: controller.movie,
-            iNavigator: controller.iNavigator,
-          ),
-          30.heightSpace,
-          LowerDetailsMovieWidget(movie: controller.movie),
-        ],
+      statusBarIconBrightness: Brightness.light,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            UpperDetailsMovieWidget(
+              movie: controller.movie,
+              iNavigator: controller.iNavigator,
+            ),
+            30.heightSpace,
+            LowerDetailsMovieWidget(movie: controller.movie),
+          ],
+        ),
       ),
     );
   }

@@ -19,28 +19,28 @@ class MoviesListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return ListView.builder(
       controller: scrollController,
       padding: EdgeInsets.zero,
-      children: [
-        ...movies.map(
-          (e) => Padding(
+      itemCount: movies.length + (isLoadingMore ? 1 : 0),
+      itemBuilder: (context, index) {
+        if (index < movies.length) {
+          return Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: MovieTileWidget(
-              movie: e,
+              movie: movies[index],
               onMovieTap: () {
-                onMovieTap?.call(e);
+                onMovieTap?.call(movies[index]);
               },
             ),
+          );
+        }
+        return const Center(
+          child: CircularProgressIndicator(
+            color: blackColor,
           ),
-        ),
-        if (isLoadingMore)
-          const Center(
-            child: CircularProgressIndicator(
-              color: blackColor,
-            ),
-          )
-      ],
+        );
+      },
     );
   }
 }

@@ -65,15 +65,9 @@ class LowerDetailsMovieWidget extends StatelessWidget {
             ),
           ),
           14.heightSpace,
-          ListView(
-            shrinkWrap: true,
-            padding: EdgeInsets.zero,
-            children: [
-              Text(
-                movie.overview,
-                style: context.label14400.copyWith(fontSize: 13),
-              ),
-            ],
+          Text(
+            movie.overview,
+            style: context.label14400.copyWith(fontSize: 13),
           ),
         ],
       ),

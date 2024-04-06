@@ -43,9 +43,7 @@ class UpperDetailsMovieWidget extends StatelessWidget {
             ),
             child: Column(
               children: [
-                const SizedBox(
-                  height: 59,
-                ),
+                40.heightSpace,
                 Row(
                   children: [
                     InkWell(
@@ -65,7 +63,7 @@ class UpperDetailsMovieWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                180.heightSpace,
+                200.heightSpace,
                 Text(
                   "In theaters ${movie.releaseDate}",
                   style: context.label16400.copyWith(
