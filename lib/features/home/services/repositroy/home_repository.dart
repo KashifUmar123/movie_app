@@ -7,6 +7,4 @@ abstract class HomeRepository {
   Future<Either<Failure, UpcomingMovies>> getMovies(
     UpcomingMoviesParams params,
   );
-  Future getMovieDetail(int id);
-  Future getMovieTrailerUrl(int id);
 }

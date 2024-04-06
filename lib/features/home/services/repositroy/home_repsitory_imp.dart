@@ -24,10 +24,4 @@ class HomeRepositoryImp implements HomeRepository {
       return Left(SomethingWentWrong("Something wen't wrong"));
     }
   }
-
-  @override
-  Future getMovieDetail(int id) async {}
-
-  @override
-  Future getMovieTrailerUrl(int id) async {}
 }
