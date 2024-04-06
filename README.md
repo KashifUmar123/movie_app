@@ -1,16 +1,12 @@
-# movieapp
+# The Movie App
+This mobile app, developed in Flutter, showcases my skills by presenting upcoming movies with brief details. It utilizes the TMDB API service (https://developer.themoviedb.org/) for fetching movie information.
 
-A new Flutter project.
+### Services used in the app:
+- Firebase Remote Config: For remote configurations.
+- Env Service: Used for managing environment variables.
+- Get Storage: Used for shared preferences.
+- Firebase Crashlytics: To monitor crashes and warnings in production.
+- Dio with Interceptors: For making remote API calls.
+- Alice Inspector: Used to inspect HTTP calls.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+In this app, I have leveraged GetX for various purposes, including dependency injection, state management, and routing.

@@ -34,12 +34,16 @@ class MoviesListWidget extends StatelessWidget {
               },
             ),
           );
+        } else {
+          return const Center(
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 50.0),
+              child: CircularProgressIndicator(
+                color: blackColor,
+              ),
+            ),
+          );
         }
-        return const Center(
-          child: CircularProgressIndicator(
-            color: blackColor,
-          ),
-        );
       },
     );
   }
