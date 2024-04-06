@@ -3,9 +3,7 @@ import 'package:movieapp/features/home/services/data/upcoming_movies_params.dart
 import 'package:movieapp/features/home/services/data_source/home_data_source.dart';
 import 'package:movieapp/features/home/services/repositroy/home_repository.dart';
 import 'package:movieapp/models/upcoming_movies_model.dart';
-
 import 'package:movieapp/network/exceptions/netwrok_exceptions.dart';
-import 'package:movieapp/utils/constants/api_endpoints.dart';
 
 class HomeRepositoryImp implements HomeRepository {
   final HomeDataSource _dataSource;
