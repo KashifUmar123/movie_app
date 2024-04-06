@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:movieapp/utils/servcies/env_service.dart';
@@ -32,7 +30,6 @@ class RemoteConfigService {
         _ConfigServiceConstants.enableApiInspector: false,
       });
       await _remoteConfig.fetchAndActivate();
-      log("Enable API INS: ${_remoteConfig.getBool(_ConfigServiceConstants.enableApiInspector)}");
     } catch (e) {
       debugPrint("Failed to inti firebase config. Error => $e");
     }

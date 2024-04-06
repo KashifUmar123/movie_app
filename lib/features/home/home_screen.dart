@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:alice/alice.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/common_widgets/custom_scaffold.dart';
@@ -48,7 +45,6 @@ class HomeScreen extends GetView<HomeController> {
   }
 
   Widget _showInspectorWidget(BuildContext context) {
-    log("_showInspectorWidget: ${controller.enableInspector}");
     if (controller.enableInspector) {
       return FloatingActionButton(
         onPressed: () {
