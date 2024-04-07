@@ -15,7 +15,6 @@ class DioWrapper {
   }) async {
     try {
       _resolveAPIMetadata(headers: headers, queryParameters: queryParameters);
-
       return await _dio.get(api);
     } on SocketException catch (_) {
       log("socket connection error");
@@ -49,6 +48,8 @@ class DioWrapper {
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
   }) {
+    _dio.options.queryParameters.clear();
+    _dio.options.headers.clear();
     if (queryParameters != null) {
       _dio.options.queryParameters.addAll(queryParameters);
     }

@@ -51,6 +51,7 @@ class _MovieAppState extends State<MovieApp> with WidgetsBindingObserver {
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
+    debugPrint("AppLifecycleState: $state");
     if (state == AppLifecycleState.resumed) {
       Get.find<RemoteConfigService>().loadConfigs().then(
         (_) {
