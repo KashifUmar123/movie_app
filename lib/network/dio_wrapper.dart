@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:movieapp/network/exceptions/netwrok_exceptions.dart';
+import 'package:movieapp/network/exceptions/netwrok_failures.dart';
 import 'package:movieapp/network/interceptors/dio_error_interceptor.dart';
 
 class DioWrapper {

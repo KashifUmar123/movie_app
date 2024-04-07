@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:movieapp/network/exceptions/netwrok_exceptions.dart';
+import 'package:movieapp/network/exceptions/netwrok_failures.dart';
 
 Failure dioErrorWrapper(DioException err) {
   Failure networkException;

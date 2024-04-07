@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:movieapp/network/exceptions/netwrok_exceptions.dart';
+import 'package:movieapp/network/exceptions/netwrok_failures.dart';
 
 abstract class UseCase<Type, Params> {
   Future<Either<Failure, Type>> call(Params params);
