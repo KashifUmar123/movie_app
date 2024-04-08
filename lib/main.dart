@@ -1,7 +1,7 @@
 import 'package:alice/alice.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/features/home/home_controller.dart';
+import 'package:movieapp/features/home/presentation/home_controller.dart';
 import 'package:movieapp/initials/bindings/initial_bindings.dart';
 import 'package:movieapp/utils/pages/app_pages.dart';
 import 'package:movieapp/utils/pages/route_names.dart';

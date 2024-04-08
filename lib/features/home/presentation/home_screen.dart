@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movieapp/common_widgets/custom_scaffold.dart';
 import 'package:movieapp/common_widgets/custom_error_widget.dart';
-import 'package:movieapp/features/home/home_controller.dart';
-import 'package:movieapp/features/home/widgets/home_shimmer.dart';
-import 'package:movieapp/features/home/widgets/movies_lists_widget.dart';
+import 'package:movieapp/features/home/presentation/home_controller.dart';
+
+import 'package:movieapp/features/home/presentation/widgets/home_shimmer.dart';
+import 'package:movieapp/features/home/presentation/widgets/movies_lists_widget.dart';
 import 'package:movieapp/utils/extensions/num_extension.dart';
 import 'package:movieapp/utils/extensions/styles_extension.dart';
 

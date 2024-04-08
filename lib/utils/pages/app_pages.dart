@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:movieapp/features/home/home_bindings.dart';
-import 'package:movieapp/features/home/home_screen.dart';
+import 'package:movieapp/features/home/presentation/home_bindings.dart';
+import 'package:movieapp/features/home/presentation/home_screen.dart';
 import 'package:movieapp/features/movie_details/movie_details_bindings.dart';
 import 'package:movieapp/features/movie_details/movie_details_screen.dart';
 import 'package:movieapp/features/splash/splash_bindings.dart';

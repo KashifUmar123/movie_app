@@ -1,6 +1,6 @@
 import 'package:alice/alice.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/features/home/home_controller.dart';
+import 'package:movieapp/features/home/presentation/home_controller.dart';
 import 'package:movieapp/features/home/services/data_source/home_data_source.dart';
 import 'package:movieapp/features/home/services/data_source/home_data_source_imp.dart';
 import 'package:movieapp/features/home/services/repositroy/home_repository.dart';
