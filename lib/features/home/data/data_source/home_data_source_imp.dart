@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:movieapp/features/home/services/data/upcoming_movies_params.dart';
-import 'package:movieapp/features/home/services/data_source/home_data_source.dart';
-import 'package:movieapp/models/upcoming_movies_model.dart';
+import 'package:movieapp/features/home/domain/entities/upcoming_movies_params.dart';
+import 'package:movieapp/features/home/data/data_source/home_data_source.dart';
+import 'package:movieapp/features/home/data/models/upcoming_movies_model.dart';
 import 'package:movieapp/network/dio_wrapper.dart';
 import 'package:movieapp/network/exceptions/netwrok_failures.dart';
 import 'package:movieapp/utils/constants/api_endpoints.dart';

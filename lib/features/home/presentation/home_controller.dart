@@ -1,10 +1,10 @@
-import 'package:alice/alice.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:movieapp/features/home/services/data/upcoming_movies_params.dart';
-import 'package:movieapp/features/home/services/usecases/fetch_upcoming_movies_list.dart';
+import 'package:movieapp/features/home/domain/entities/upcoming_movies_params.dart';
+import 'package:movieapp/features/home/domain/usecases/fetch_upcoming_movies_list.dart';
+import 'package:movieapp/features/home/presentation/home_bindings.dart';
 import 'package:movieapp/initials/controllers/base_controller.dart';
-import 'package:movieapp/models/upcoming_movies_model.dart';
+import 'package:movieapp/features/home/data/models/upcoming_movies_model.dart';
 import 'package:movieapp/utils/pages/route_names.dart';
 import 'package:movieapp/utils/servcies/firebase_remote_config_service.dart';
 import 'package:movieapp/utils/utils.dart';

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:movieapp/features/home/services/data/upcoming_movies_params.dart';
-import 'package:movieapp/features/home/services/repositroy/home_repository.dart';
-import 'package:movieapp/models/upcoming_movies_model.dart';
+import 'package:movieapp/features/home/domain/entities/upcoming_movies_params.dart';
+import 'package:movieapp/features/home/domain/repositories/home_repository.dart';
+import 'package:movieapp/features/home/data/models/upcoming_movies_model.dart';
 import 'package:movieapp/network/exceptions/netwrok_failures.dart';
 import 'package:movieapp/utils/usecase.dart';
 

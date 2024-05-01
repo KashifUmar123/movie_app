@@ -49,7 +49,7 @@ class HomeScreen extends GetView<HomeController> {
     if (controller.enableInspector) {
       return FloatingActionButton(
         onPressed: () {
-          controller.alice.showInspector();
+          // controller.alice.showInspector();
         },
         child: const Center(
           child: Icon(

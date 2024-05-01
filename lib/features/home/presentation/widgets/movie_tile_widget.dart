@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/common_widgets/custom_image.dart';
-import 'package:movieapp/models/upcoming_movies_model.dart';
+import 'package:movieapp/features/home/data/models/upcoming_movies_model.dart';
 import 'package:movieapp/utils/constants/app_colors.dart';
 import 'package:movieapp/utils/extensions/size_extension.dart';
 import 'package:movieapp/utils/utils.dart';
