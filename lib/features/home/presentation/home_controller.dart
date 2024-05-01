@@ -12,16 +12,17 @@ import 'package:movieapp/utils/utils.dart';
 class HomeController extends BaseController {
   final FetchUpcomingMoviesUsecase _fetchUpcomingMoviesUsecase;
   final RemoteConfigService configService;
-  final Alice alice;
+  // final Alice alice;
 
   HomeController({
     required super.iNavigator,
     required FetchUpcomingMoviesUsecase fetchUpcomingMoviesUsecase,
     required RemoteConfigService remoteConfigService,
-    required Alice aliceInspector,
+    // required Alice aliceInspector,
   })  : _fetchUpcomingMoviesUsecase = fetchUpcomingMoviesUsecase,
-        configService = remoteConfigService,
-        alice = aliceInspector;
+        configService = remoteConfigService
+  // alice = aliceInspector
+  ;
 
   // controll variables
   RxBool isLoading = false.obs;

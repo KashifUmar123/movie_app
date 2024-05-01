@@ -12,7 +12,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await InitialBindings().initInitials();
   runApp(MovieApp(
-    alice: Get.find<Alice>(),
+    alice: Alice(),
   ));
 }
 
@@ -40,7 +40,7 @@ class _MovieAppState extends State<MovieApp> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      navigatorKey: widget.alice.getNavigatorKey(),
+      // navigatorKey: widget.alice.getNavigatorKey(),
       debugShowCheckedModeBanner: false,
       theme: AppTheme.themeData,
       getPages: AppRoutes.pages,

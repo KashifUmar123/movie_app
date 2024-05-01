@@ -33,7 +33,7 @@ class HomeBindings extends Bindings {
     Get.put(
       HomeController(
         iNavigator: Get.find<INavigator>(),
-        aliceInspector: Get.find<Alice>(),
+        // aliceInspector: Get.find<Alice>(),
         remoteConfigService: Get.find<RemoteConfigService>(),
         fetchUpcomingMoviesUsecase: Get.find<FetchUpcomingMoviesUsecase>(),
       ),
