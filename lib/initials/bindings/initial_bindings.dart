@@ -9,7 +9,6 @@ import 'package:movieapp/utils/pages/navigator.dart';
 import 'package:movieapp/utils/servcies/env_service.dart';
 import 'package:movieapp/utils/servcies/firebase_remote_config_service.dart';
 import 'package:movieapp/utils/servcies/local_storage_service.dart';
-import '../../features/home/presentation/home_bindings.dart';
 
 class InitialBindings {
   Future<void> initInitials() async {
